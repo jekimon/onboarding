@@ -84,11 +84,12 @@ const faqHeading = faqChild[0];
 const faqPanel = faqChild[1];
 setTimeout(function () {
     // faq.classList.add('active');
-    faq.className = "hl-faq-child active faq-contained-child"
-    faqHeading.classList.add('active');
-    faqPanel.style.opacity = '1';
-    faqPanel.style.height = 'auto';
-    faqPanel.style.removeProperty('padding');
+    // faq.className = "hl-faq-child active faq-contained-child"
+    // faqHeading.classList.add('active');
+    // faqPanel.style.opacity = '1';
+    // faqPanel.style.height = 'auto';
+    // faqPanel.style.removeProperty('padding');
+    faqHeading.click();
     faq.scrollIntoView({ behavior: "smooth", block: "center" });
 
 }, 500);
