@@ -1,0 +1,263 @@
+.side-navigation {
+    top: 78px;
+    height: calc(100% - 78px);
+    position: fixed !important;
+    max-width: 400px;
+    right: 0;
+    z-index: 2;
+    transition: all 120ms cubic-bezier(0.39, 0.58, 0.57, 1);
+    width: 23.6%;
+}
+
+.side-navigation.sticky {
+    top: 0px;
+    height: 100%;
+}
+
+.side-navigation>.inner {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.navigation-row {
+    position: relative;
+    max-height: 100%;
+    display: flex;
+    flex: 1;
+    height: 1px;
+    width: 100% !important;
+}
+
+.navigation-main>.inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation-main>.inner .nav-column {
+    width: 100%;
+    position: relative;
+}
+
+.nav-tabs {
+    padding: 0;
+    height: calc(100% - 3.5rem);
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+    visibility: visible;
+}
+
+.nav-tabs .horizontal.inner {
+    background-color: #fff;
+    border: 1px solid #f6f7f9;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.hero-row>.inner {
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+.video-column>.inner {
+    position: relative;
+}
+
+.video-column .c-button:has(.prev-btn),
+.video-column .c-button:has(.next-btn) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+/** CONTROL BUTTONS **/
+.c-button:has(.nav-btn) {
+    right: 0;
+    top: 20px;
+    z-index: 1;
+    bottom: auto;
+}
+
+.c-button:has(.next-btn) {
+    right: 0;
+}
+
+.c-button:has(.prev-btn) {
+    left: 0;
+}
+
+.c-button .prev-btn,
+.c-button .next-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/** NAV BAR **/
+.hl-faq {
+    overflow-y: auto;
+    height: 100% !important;
+    background: #f7f7f7 !important;
+    outline: solid 1px #cbd5e0 !important;
+    outline-offset: -1px !important;
+}
+
+.faq-contained-child.hl-faq-child {
+    border-bottom: none !important;
+}
+
+/** PROGRESS BAR **/
+.progressbarSmall {
+    height: 6px !important;
+}
+
+.progressbarOffsetWhite {
+    background: #273a47 !important;
+}
+
+.nav-column {
+    max-width: 400px !important;
+}
+
+figure.video-container {
+    max-width: 1200px;
+}
+
+figure.vimeo-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.extra-column {
+    max-width: 400px !important;
+}
+
+.feature-text .img-container {
+    display: none;
+}
+
+.feature-text .txt-container {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.text-column .c-image-feature {
+    flex: unset !important;
+    max-width: 720px !important;
+}
+
+.text-column .c-button {
+    flex: unset !important;
+    min-width: 320px;
+}
+
+.text-column>.horizontal.inner {
+    flex-wrap: nowrap !important;
+    display: flex;
+    gap: 30px;
+}
+
+.hl-faq-child-heading,
+hl-faq-child-panel {
+    padding: 20px !important;
+}
+
+.footer-section {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-row {
+    position: static;
+}
+
+.text-column {
+    position: static;
+}
+
+.c-button:has(.nav-btn) {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    min-width: unset;
+}
+
+.options-column .horizontal.inner {
+    gap: 10px;
+}
+
+.options-column .c-button {
+    flex: unset !important;
+}
+
+.options-column .c-button button {
+    padding: 0;
+}
+
+.side-navigation.collapsed,
+.nav-column.collapsed,
+.extra-column.collapsed {
+    display: none;
+}
+
+.featureHeadline h2 em {
+    font-size: 16px;
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: -12px;
+}
+
+.hl-faq-child-heading-text {
+    transition: all 200ms ease;
+}
+
+.hl-faq-child-heading-text:hover {
+    transform: scale3d(1.01, 1.01, 1.01);
+}
+
+span.button-icon-start {
+    font-size: 16px !important;
+    margin-right: 10px !important;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #000000c9;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader.hidden {
+    display: none;
+}
+
+.play-next {
+    margin-left: 16px;
+    display: none;
+}
+
+.c-button:has(.play-next) {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
