@@ -105,7 +105,7 @@ function startTimer() {
     var angle = 0;
     var angle_increment = 1;
     loader.classList.remove('hidden');
-    loader.style.display = "block";
+    loader.style.display = "flex";
     playNext.style.display = "inline";
 
     window.timer = window.setInterval(function () {
