@@ -98,6 +98,7 @@ console.log(faqPanel);
 
 function startTimer() {
     const loader = document.getElementById('loading');
+    const spinner = document.getElementById('cirleSpinner');
     const playNext = document.querySelector('.play-next');
     var circle = document.getElementById('green-halo');
     var myTimer = document.getElementById('myTimer');
@@ -105,7 +106,7 @@ function startTimer() {
     var angle = 0;
     var angle_increment = 1;
     loader.classList.remove('hidden');
-    loader.style.display = "flex";
+    spinner.style.display = "block";
     playNext.style.display = "inline";
 
     window.timer = window.setInterval(function () {
