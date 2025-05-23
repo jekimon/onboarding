@@ -126,3 +126,13 @@ const player = new Vimeo.Player(iframe);
 player.on('ended', function () {
     startTimer();
 });
+
+function cancelPlayNext() {
+    window.clearInterval(window.timer);
+    const loader = document.getElementById('loading');
+    const spinner = document.getElementById('cirleSpinner');
+    const playNext = document.querySelector('.play-next');
+    spinner.style.display = "none";
+    playNext.style.display = "none";
+    loader.classList.add('hidden');
+}
