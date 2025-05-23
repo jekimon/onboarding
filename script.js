@@ -113,7 +113,7 @@ function startTimer() {
         if (angle >= 360) {
             window.clearInterval(window.timer);
             //  loader.classList.add('hidden');
-            playNext.click();
+            // playNext.click();
         }
         angle += angle_increment;
     }.bind(this), interval);
