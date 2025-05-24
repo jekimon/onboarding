@@ -1,3 +1,11 @@
+/*!
+* PLEASE DO NOT EDIT WITHOUT PERMISSION
+* GoHighLevel Onboarding Funnel Script
+* author: Jek Tibayan
+* company: Insert Fuel
+*/
+
+
 // SIDE NAVIGATION BAR SCROLL BEHAVIOR
 window.addEventListener('scroll', function (event) {
     const sideNavBar = document.getElementById('section-_LQQKPp1HD');
@@ -190,6 +198,7 @@ setTimeout(function () {
 
     function completeStep(aTitle, aBtn) {
         aTitle.classList.add('completed');
+        aBtn.classList.add('completed');
         aBtn.innerHTML = '✅ Completed';
     }
     
@@ -258,9 +267,9 @@ setTimeout(function () {
                         setTimeout(function () {
                             completeStep(titleA, btnA);
                             completeBtn.click();
-                        }, 500);
+                        }, 100);
                     }
-                }, 500);
+                }, 100);
             }
         }
     });
