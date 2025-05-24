@@ -1,3 +1,42 @@
+.loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #000000c9;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hl-faq-child-heading-text a.completed {
+    color: #f7b537 !important;
+    font-weight: 700 !important;
+}
+
+.hl-faq-child-heading-text a.completed::before {
+    content: '✔';
+    font-size: 12px;
+    margin-right: 5px;
+    margin-left: -14px;
+    color: #f7b537 !important;
+}
+
+.play-next {
+    margin-left: 16px;
+    display: none;
+}
+
+.c-button:has(.play-next) {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
 .side-navigation {
     top: 78px;
     height: calc(100% - 78px);
@@ -20,6 +59,7 @@
     height: 100%;
     justify-content: flex-start;
 }
+
 
 .navigation-row {
     position: relative;
@@ -70,8 +110,8 @@
 .video-column .c-button:has(.prev-btn),
 .video-column .c-button:has(.next-btn) {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 30px;
+    bottom: 30px;
     display: flex;
     align-items: center;
     z-index: 2;
@@ -84,6 +124,7 @@
     z-index: 1;
     bottom: auto;
 }
+
 
 .c-button:has(.next-btn) {
     right: 0;
@@ -103,6 +144,15 @@
 }
 
 /** NAV BAR **/
+/*
+.nav-column .c-faq {
+    height: 95vh!important;
+    position: absolute!important;
+    top: 0!important;
+    z-index: 1;
+    overflow-y: visible;
+}
+*/
 .hl-faq {
     overflow-y: auto;
     height: 100% !important;
@@ -115,6 +165,12 @@
     border-bottom: none !important;
 }
 
+/*.hl-faq-child.faq-contained-child {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}*/
 /** PROGRESS BAR **/
 .progressbarSmall {
     height: 6px !important;
@@ -178,6 +234,7 @@ hl-faq-child-panel {
     z-index: 1;
 }
 
+
 .hero-row {
     position: static;
 }
@@ -185,6 +242,7 @@ hl-faq-child-panel {
 .text-column {
     position: static;
 }
+
 
 .c-button:has(.nav-btn) {
     position: absolute;
@@ -229,35 +287,70 @@ hl-faq-child-panel {
     transform: scale3d(1.01, 1.01, 1.01);
 }
 
+/* .hl-faq-child-heading-text:hover::after {
+    content: "🡢";
+    position: absolute;
+  	top: 4px;
+    font-size: 10px;
+    right: -15px;
+    color: #9b9b9b;
+    transition: all 200ms ease;
+}
+ */
+
 span.button-icon-start {
     font-size: 16px !important;
     margin-right: 10px !important;
 }
 
-.loader {
+/**ERROR**/
+
+.footer-section,
+.footer-section .c-row,
+.footer-section .c-column {
+    position: static;
+}
+
+div#form-R0bv4apUKj {
+    /*display: flex;*/
     position: absolute;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
-    background: #000000c9;
-    z-index: 1;
-    display: flex;
+    justify-content: center;
     align-items: center;
+    background: #00000094;
+    z-index: 2;
+}
+
+.cform-R0bv4apUKj {
+    width: 320px;
+}
+
+div#custom-code-Z00b-mgovB.show,
+div#custom-code-Z00b-mgovB.show>div#custom-code-Z00b-mgovB {
+    display: block !important;
+}
+
+div#custom-code-Z00b-mgovB {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    z-index: 3;
+    box-shadow: -1px 2px 13px 2px #00000029;
+}
+  
+.signout-container {
+    display: flex;
     justify-content: center;
 }
 
-.loader.hidden {
-    display: none;
-}
-
-.play-next {
-    margin-left: 16px;
-    display: none;
-}
-
-.c-button:has(.play-next) {
-    position: absolute;
-    width: 100%;
-    z-index: 2;
+button#signout-btn {
+    font-family: var(--headlinefont);
+    background-color: var(--malibu);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
 }
