@@ -188,14 +188,20 @@ setTimeout(function () {
         complete.innerHTML = '✅ Completed';
     }
 
+    function completeStep(aTitle, aBtn) {
+        aTitle.classList.add('completed');
+        aBtn.innerHTML = '✅ Completed';
+    }
+    
     // STEP ITEM COMPLETE BUTTON FUNCTION
     container.addEventListener('click', function (event) {
         if (event.target.tagName == 'A') {
             if (event.target.innerHTML.includes('Completed')) {
-                const trigger = event.target;
-                const parent = trigger.closest('.hl-faq-child-panel');
-                const title = parent.previousElementSibling;
-                const stepTitle = title.getElementsByTagName('a')[0].innerHTML;
+                const btnA = event.target; // BUTTON
+                const parent = btnA.closest('.hl-faq-child-panel'); // PANEL
+                const title = parent.previousElementSibling; // TITLE
+                const titleA = title.getElementsByTagName('a')[0];
+                const stepTitle = titleA.innerHTML;
                 const step = stepTitle.toLowerCase();
 
                 // SET STEP ITEM CODENAME
@@ -250,6 +256,7 @@ setTimeout(function () {
                     
                         // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
                         setTimeout(function () {
+                            completeStep(titleA, btnA);
                             completeBtn.click();
                         }, 500);
                     }
