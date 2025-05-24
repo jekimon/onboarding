@@ -101,14 +101,13 @@ function startTimer() {
 }
 
 const iframe = document.getElementById('vimeo-player');
-const player = new Vimeo.Player(iframe);
-
-// CALL THE FUNCTION WHEN VIDEO HAS ENDED
-player.on('ended', function () {
-    startTimer();
-});
-
-
+if (iframe) {
+    const player = new Vimeo.Player(iframe);
+    // CALL THE FUNCTION WHEN VIDEO HAS ENDED
+    player.on('ended', function () {
+        startTimer();
+    });
+}
 // FUNCTION TO CANCEL GOING TO NEXT STEP
 function cancelPlayNext() {
     window.clearInterval(window.timer);
