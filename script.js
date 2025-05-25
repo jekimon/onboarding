@@ -420,7 +420,7 @@ if (container) {
                           } else {
                               console.log('Progress updated successfully')
                           }
-                        }, 1500);
+                        }, 2000);
                 }, 100);
             }
         }
