@@ -408,7 +408,7 @@ if (container) {
                 const btnA = event.target; // BUTTON
                 const parent = btnA.closest('.hl-faq-child-panel'); // PANEL
                 const title = parent.previousElementSibling; // TITLE
-                const titleA = title.getElementsByTagName('a')[0];
+                const titleA = title.getElementsByTagName('h4')[0];
                 const stepTitle = titleA.innerHTML;
                 const currentStep = getCompletedSteps();
                 const newStep = getSelectedStep(stepTitle);
