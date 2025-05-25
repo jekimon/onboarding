@@ -98,7 +98,7 @@ if (pageTitle) {
         const faq = faqs[faqNo];
         const faqChild = faq.children
         const faqHeading = faqChild[0];
-        const title = faqHeading.getElementsByTagName('a')[0];
+        const title = faqHeading.getElementsByTagName('h4')[0];
         const faqPanel = faqChild[1];
 
             setTimeout(function () {
@@ -196,7 +196,7 @@ if (dataStr != "") {
         const faqChild = faq.children
         const faqHeading = faqChild[0];
         const faqPanel = faqChild[1];
-        const title = faqHeading.getElementsByTagName('a')[0];
+        const title = faqHeading.getElementsByTagName('h4')[0];
         const complete = faqPanel.getElementsByTagName('u')[0];
         title.classList.add('completed');
         complete.classList.add('completed');
