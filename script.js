@@ -417,7 +417,7 @@ if (container) {
                           } else {
                               console.log('Progress updated successfully')
                           }
-                        }, 500);
+                        }, 1000);
                 }, 100);
             }
         }
