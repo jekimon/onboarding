@@ -178,12 +178,7 @@ if (dataStr != "") {
     const progCon = document.querySelector('.progress-txt');
     const progEl = progCon.getElementsByTagName('h2')[0];
     progEl.innerHTML = 'Progress: ' + dataSteps.length + ' / 15';
-
-
-    console.log(dataStr)
     console.log(dataSteps)
-
-
     // GET ALL STEPS
     const faqCont = document.querySelector(".hl-faq");
     const faqs = faqCont.children;
@@ -383,9 +378,6 @@ function completeStep(aTitle, aBtn, current, selected) {
         // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
         setTimeout(function () {
             completeBtn.click();
-             // setTimeout(function () {
-             //    location.reload();
-             // }, 2100);
         }, 100);
     }
 }
@@ -393,10 +385,13 @@ function completeStep(aTitle, aBtn, current, selected) {
 function verify() {
       const completeBtn = document.querySelector('.form-builder--btn-submit button');
       const formColumn = document.querySelector('.form-column');
-      completeBtn.click();
-      setTimeout(function () {
-            formColumn.style.display = "none";
-      }, 100);
+       const error = document.getElementById('error-container');
+      if (!error) {
+          completeBtn.click();
+          setTimeout(function () {
+                formColumn.style.display = "none";
+          }, 100);
+      } 
   }
     
 // STEP ITEM COMPLETE BUTTON FUNCTION
