@@ -387,6 +387,15 @@ function completeStep(aTitle, aBtn, current, selected) {
     }
 }
 
+function verify() {
+      const completeBtn = document.querySelector('.form-builder--btn-submit button');
+      const formColumn = document.querySelector('.form-column');
+      completeBtn.click();
+      setTimeout(function () {
+            formColumn.style.display = "none";
+      }, 100);
+  }
+    
 // STEP ITEM COMPLETE BUTTON FUNCTION
 const container = document.querySelector(".hl-faq");
 if (container) {
@@ -409,14 +418,6 @@ if (container) {
                           if (error) {
                               const formColumn = document.querySelector('.form-column');
                               formColumn.style.display = "flex";
-                              const formBtn = document.getElementById('verify-btn');
-                              function verify() {
-                                  const completeBtn = document.querySelector('.form-builder--btn-submit button');
-                                  completeBtn.click();
-                                  setTimeout(function () {
-                                        formColumn.style.display = "none";
-                                  }, 100);
-                              }
                           } else {
                               console.log('Progress updated successfully')
                           }
