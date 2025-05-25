@@ -383,6 +383,7 @@ function completeStep(aTitle, aBtn, current, selected) {
         // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
         setTimeout(function () {
             completeBtn.click();
+            location.reload();
         }, 100);
     }
 }
