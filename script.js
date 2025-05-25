@@ -4,7 +4,6 @@
 * author: Jek Tibayan
 * company: Insert Fuel
 */
-console.log(localStorage.getItem("_ud"))
 
 if (localStorage.getItem("_ud") == null) {
     const loginUrl = 'https://engine.insertfuel.com/v2/preview/23n0YsF8qhJcW9PpeQJu'
@@ -405,6 +404,20 @@ if (container) {
                 // UPDATE COMPLETED STEPS
                 setTimeout(function () {
                     completeStep(titleA, btnA, currentStep, newStep);
+                      setTimeout(function () {
+                          const error = document.getElementById('error-container');
+                          if (error) {
+                              const form = document.getElementById('form-R0bv4apUKj');
+                              form.style.display = "flex";
+                              const formBtn = document.querySelector('#el_9I9GiqvGqYahbTD1Fmi4_button_2 button');
+                                formBtn.addEventListener("click", hideErrorForm);
+                                function hideErrorForm() {
+                                    form.style.display = "none";
+                                }
+                          } else {
+                              console.log('Progress updated successfully')
+                          }
+                        }, 500);
                 }, 100);
             }
         }
