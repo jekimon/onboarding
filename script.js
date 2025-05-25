@@ -55,6 +55,25 @@ function showHidden() {
     blankColumn2.classList.toggle("collapsed");
 }
 
+function hideNavBar() {
+    const sideNavBar = document.getElementById('section-_LQQKPp1HD');
+    const blankColumn1 = document.querySelector('.nav-column.blank-column');
+    const blankColumn2 = document.querySelector('.extra-column.blank-column');
+    sideNavBar.classList.add("collapsed");
+    blankColumn1.classList.add("collapsed");
+    blankColumn2.classList.add("collapsed");
+}
+
+function checkViewportWidth() {
+  const threshold = 768;
+  if (window.innerWidth <= threshold) {
+    hideNavBar();
+  }
+}
+
+checkViewportWidth();
+window.addEventListener('resize', checkViewportWidth);    
+
 // SIDE NAVIGATION ACCORDION OPENS AND SCROLL INTO VIEW AFTER PAGE LOAD
 const pageTitle = document.querySelector('.img-feature-container h2').innerHTML;
 if (pageTitle) {
