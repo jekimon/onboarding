@@ -385,13 +385,13 @@ function completeStep(aTitle, aBtn, current, selected) {
 function verify() {
       const completeBtn = document.querySelector('.form-builder--btn-submit button');
       const formColumn = document.querySelector('.form-column');
-       const error = document.getElementById('error-container');
-      if (!error) {
-          completeBtn.click();
-          setTimeout(function () {
+      const error = document.getElementById('error-container');
+      completeBtn.click();
+      setTimeout(function () {
+            if (!error) {
                 formColumn.style.display = "none";
-          }, 100);
-      } 
+            }
+      }, 100);
   }
     
 // STEP ITEM COMPLETE BUTTON FUNCTION
