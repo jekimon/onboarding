@@ -21,12 +21,14 @@
     font-weight: 700 !important;
 }
 
-.hl-faq-child-heading-text h4.completed::before {
-    content: '✔';
-    font-size: 12px;
-    margin-right: 5px;
-    margin-left: -14px;
-    color: #f7b537 !important;
+.hl-faq-child-heading-text h4.completed::after {
+    content: '✅';
+    font-size: 14px;
+    margin-left: 5px;
+}
+  
+u.completed {
+    font-weight: 700;
 }
 
 .play-next {
@@ -84,6 +86,10 @@
     position: relative;
 }
 
+.nav-head {
+    z-index: 1;
+}
+  
 .nav-tabs {
     padding: 0;
     height: calc(100% - 3.5rem);
@@ -143,6 +149,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  	opacity: 0.6;
+}
+  
+.c-button .prev-btn:hover,
+.c-button .next-btn:hover {
+    opacity: 1;
+}
+  
+.prev-btn .button-icon-start, .next-btn .button-icon-end {
+    font-size: 16px;
+}
+  
+.c-button .prev-btn {
+    border-radius: 0 8px 8px 0;
+}
+  
+.c-button .next-btn {
+    border-radius: 8px 0 0 8px;
 }
 
 /** NAV BAR **/
@@ -399,6 +423,14 @@ div#custom-code-Z00b-mgovB {
     .text-column>.horizontal.inner {
         gap: 10px !important;
     }
+  
+    .text-column .c-button {
+        text-align: center!important;
+    }
+  
+    .hl-faq-child-item-text u {
+      bottom: 3px!important;
+  }
 }
 
 @media (max-width: 768px) {
