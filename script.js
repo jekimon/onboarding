@@ -197,7 +197,7 @@ if (dataStr != "") {
         const faqHeading = faqChild[0];
         const faqPanel = faqChild[1];
         const title = faqHeading.getElementsByTagName('a')[0];
-        const complete = faqPanel.getElementsByTagName('a')[0];
+        const complete = faqPanel.getElementsByTagName('u')[0];
         title.classList.add('completed');
         complete.classList.add('completed');
         complete.innerHTML = '✅ Completed';
@@ -400,7 +400,7 @@ function verify() {
 const container = document.querySelector(".hl-faq");
 if (container) {
     container.addEventListener('click', function (event) {
-        if (event.target.tagName == 'A') {
+        if (event.target.tagName == 'U') {
             if (event.target.innerHTML.includes('Completed')) {
                 const btnA = event.target; // BUTTON
                 const parent = btnA.closest('.hl-faq-child-panel'); // PANEL
