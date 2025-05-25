@@ -407,17 +407,20 @@ if (container) {
                       setTimeout(function () {
                           const error = document.getElementById('error-container');
                           if (error) {
-                              const form = document.getElementById('form-R0bv4apUKj');
-                              form.style.display = "flex";
-                              const formBtn = document.querySelector('#el_9I9GiqvGqYahbTD1Fmi4_button_2 button');
-                                formBtn.addEventListener("click", hideErrorForm);
-                                function hideErrorForm() {
-                                    form.style.display = "none";
-                                }
+                              const formColumn = document.querySelector('.form-column');
+                              formColumn.style.display = "flex";
+                              const formBtn = document.getElementById('verify-btn');
+                              function verify() {
+                                  const completeBtn = document.querySelector('.form-builder--btn-submit button');
+                                  completeBtn.click();
+                                  setTimeout(function () {
+                                        formColumn.style.display = "none";
+                                  }, 100);
+                              }
                           } else {
                               console.log('Progress updated successfully')
                           }
-                        }, 1000);
+                        }, 1500);
                 }, 100);
             }
         }
