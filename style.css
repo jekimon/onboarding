@@ -224,7 +224,7 @@ figure.vimeo-container {
     flex-direction: column;
     justify-content: center;
 }
-  
+
 .text-column {
     position: static;
 }
@@ -373,6 +373,15 @@ div#custom-code-Z00b-mgovB {
     margin: auto;
 }
 
+#loading button {
+    text-transform: unset !important;
+    letter-spacing: 0px !important;
+}
+
+#loading button:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 480px) {
     .side-navigation {
         width: 100%;
@@ -403,8 +412,8 @@ div#custom-code-Z00b-mgovB {
     .text-column>.horizontal.inner {
         flex-direction: column !important;
     }
-    
+
     .text-column .c-button {
-      text-align: left;
-  }
+        text-align: left;
+    }
 }
