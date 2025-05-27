@@ -391,6 +391,7 @@ if (localStorage.getItem("_ud") == null) {
             aBtn.classList.remove('completed');
             aBtn.innerHTML = '⬜ Completed';
             var steps = current.replace('/' + selected + '/', '');
+            var action = "Remove";
         } else {
             aTitle.classList.add('completed');
             aBtn.classList.add('completed');
@@ -400,7 +401,7 @@ if (localStorage.getItem("_ud") == null) {
             } else {
                 var steps = current + '/' + selected + '/';
             }
-
+             var action = "Add";
         }
 
         const dataCon = document.querySelector('.contact_steps');
@@ -408,15 +409,22 @@ if (localStorage.getItem("_ud") == null) {
         dataEl.innerHTML = steps;
         updateProgress(steps);
         // GET THE HIDDEN INPUT ELEMENT
-        const stepToComplete = document.querySelector('#zduFaHuTGsHuJVmxlhn2');
-
+        const completedSteps = document.querySelector('#zduFaHuTGsHuJVmxlhn2');
+        const selectedStep = document.querySelector('#QS91JexNdpYTzFQ74XKR');
+        const lastAction = document.querySelector('#aMdFWgt2ZjAW7JRLglr0');
         // GET THE HIDDEN FORM SUBMIT BUTTON
         const completeBtn = document.querySelector('.form-builder--btn-submit button');
 
-        if (stepToComplete) {
+        if (completedSteps && selectedStep && lastAction) {
             // SET THE HIDDEN FORM INPUT VALUE
             document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].value = steps;
             document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].dispatchEvent(new Event("input"));
+
+            document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].value = selected;
+            document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].dispatchEvent(new Event("input"));
+
+            document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].value = action;
+            document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].dispatchEvent(new Event("input"));
 
             // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
             setTimeout(function () {
