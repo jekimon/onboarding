@@ -20,6 +20,21 @@ if (localStorage.getItem("_ud") == null) {
     if (window.location.href == loginUrl) {
         localStorage.clear();
         sessionStorage.clear();
+        function allStorage() {
+
+            var archive = [],
+                keys = Object.keys(localStorage),
+                i = 0, key;
+
+            for (; key = keys[i]; i++) {
+                archive.push( key + '=' + localStorage.getItem(key));
+            }
+
+            return archive;
+        }
+
+        console.log(allStorage());
+
     } else {
 
         // SIDE NAVIGATION BAR SCROLL BEHAVIOR
