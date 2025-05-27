@@ -24,6 +24,11 @@ if (localStorage.getItem("_ud") == null) {
         }
     };
 
+    window.addEventListener("resize", () => {
+      console.log("Window resized!", window.innerWidth, window.innerHeight);
+  // Perform actions based on the new viewport dimensions here
+    });
+
     window.addEventListener('scroll', function (event) {
         const sideNavBar = document.getElementById('section-_LQQKPp1HD');
 
@@ -75,10 +80,21 @@ if (localStorage.getItem("_ud") == null) {
         blankColumn2.classList.add("collapsed");
     }
 
+    function showNavBar() {
+        const sideNavBar = document.getElementById('section-_LQQKPp1HD');
+        const blankColumn1 = document.querySelector('.nav-column.blank-column');
+        const blankColumn2 = document.querySelector('.extra-column.blank-column');
+        sideNavBar.classList.remove("collapsed");
+        blankColumn1.classList.remove("collapsed");
+        blankColumn2.classList.remove("collapsed");
+    }
+
     function checkViewportWidth() {
         const threshold = 768;
         if (window.innerWidth <= threshold) {
             hideNavBar();
+        } else {
+            showNavBar()
         }
     }
 
@@ -89,7 +105,6 @@ if (localStorage.getItem("_ud") == null) {
     const pageTitle = document.querySelector('.img-feature-container h2').innerHTML;
     if (pageTitle) {
         const title = pageTitle.toLowerCase();
-
         if (title.includes('welcome')) {
             var faqNo = 0;
         } else if (title.includes('socials')) {
@@ -146,12 +161,8 @@ if (localStorage.getItem("_ud") == null) {
                     } else {
                         console.error('iframe element with id "your-iframe-id" not found.');
                     }
-
                 }
-
             }, 600);
-
-
         }
     }
 
