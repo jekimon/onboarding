@@ -36,12 +36,12 @@ if (localStorage.getItem("_ud") == null) {
         }
     });
 
-    const accName = document.getElementById('account-name');
-    const accEmail = document.getElementById('account-email');
-    const contName = document.querySelector('.contact_details > div').children[0].innerHTML;
-    const contEmail = document.querySelector('.contact_details > div').children[1].innerHTML;
-
-    if (contName) {
+    const contDetails = document.querySelector('.contact_details > div');
+    if (contDetails) {
+        const contName = contDetails.children[0].innerHTML;
+        const contEmail = contDetails.children[1].innerHTML;
+        const accName = document.getElementById('account-name');
+        const accEmail = document.getElementById('account-email');
         accName.innerHTML = contName;
         accEmail.innerHTML = contEmail;
     }
