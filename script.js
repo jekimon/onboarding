@@ -469,6 +469,9 @@ if (localStorage.getItem("_ud") == null) {
 
     function signout() {
         localStorage.clear();
-        location.reload();
+        sessionStorage.clear();
+           setTimeout(function () {
+                location.reload();
+           }, 200);
     }
 }
