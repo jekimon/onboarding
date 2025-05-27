@@ -57,9 +57,11 @@ if (localStorage.getItem("_ud") == null) {
 
     function showHidden() {
         const sideNavBar = document.getElementById('section-_LQQKPp1HD');
+        const videoColumn = document.querySelector('.video-column');
         const blankColumn1 = document.querySelector('.nav-column.blank-column');
         const blankColumn2 = document.querySelector('.extra-column.blank-column');
         sideNavBar.classList.toggle("collapsed");
+        videoColumn.classList.toggle("expand");
         blankColumn1.classList.toggle("collapsed");
         blankColumn2.classList.toggle("collapsed");
     }
