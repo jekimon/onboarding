@@ -24,11 +24,6 @@ if (localStorage.getItem("_ud") == null) {
         }
     };
 
-    window.addEventListener("resize", () => {
-      console.log("Window resized!", window.innerWidth, window.innerHeight);
-  // Perform actions based on the new viewport dimensions here
-    });
-
     window.addEventListener('scroll', function (event) {
         const sideNavBar = document.getElementById('section-_LQQKPp1HD');
 
