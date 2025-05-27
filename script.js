@@ -6,6 +6,8 @@
 */
 
 if (localStorage.getItem("_ud") == null) {
+    localStorage.clear();
+    sessionStorage.clear();
     const loginUrl = 'https://engine.insertfuel.com/v2/preview/23n0YsF8qhJcW9PpeQJu'
     if (window.location.href != loginUrl) {
         window.location.replace(loginUrl);
