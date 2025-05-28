@@ -193,7 +193,7 @@ if (localStorage.getItem("_ud") == null) {
         if (pageTitle) {
             const stepCode = getStepCode(pageTitle);
             const stepIndex = getIndex(stepCode);
-            
+
             const stepsContainer = document.querySelector('.hl-faq');
             if (stepsContainer) {
                 const steps = stepsContainer.children;
@@ -221,7 +221,7 @@ if (localStorage.getItem("_ud") == null) {
 
                 setTimeout(function () {
                     if (!stepTitle.classList.contains('completed')) {
-                        faqHeading.click();
+                        stepHeading.click();
                         faq.scrollIntoView({ behavior: "smooth", block: "center" });
 
                     } else {
@@ -263,12 +263,14 @@ if (localStorage.getItem("_ud") == null) {
                 for (let i = 0; i < dataSteps.length; i++) {
                     const step = dataSteps[i];
                     const number = getIndex(step);
+
                     const faq = faqs[number];
                     const faqChild = faq.children
                     const faqHeading = faqChild[0];
                     const faqPanel = faqChild[1];
                     const title = faqHeading.getElementsByTagName('h4')[0];
                     const complete = faqPanel.getElementsByTagName('u')[0];
+
                     title.classList.add('completed');
                     complete.classList.add('completed');
                     complete.innerHTML = '✅ Completed';
@@ -468,12 +470,6 @@ if (localStorage.getItem("_ud") == null) {
             const selected = json.s;
             const fullTitle = json.f;
 
-            console.log(title);
-            console.log(btn);
-            console.log(completed);
-            console.log(selected);
-            console.log(fullTitle);
-
             // UPDATE COMPLETED STEPS
             completeStep(title, btn, completed, selected, fullTitle);
         }
@@ -502,11 +498,11 @@ if (localStorage.getItem("_ud") == null) {
                         const btnAClass = btnA.classList;
 
                         if (btnAClass.contains('completed')) {
-                              openPopup("reset", currentStep, newStep, stepTitle);
+                            openPopup("reset", currentStep, newStep, stepTitle);
                         } else {
-                             openPopup("complete", currentStep, newStep, stepTitle);
+                            openPopup("complete", currentStep, newStep, stepTitle);
                         }
-           
+
                     }
                 }
             });
@@ -519,7 +515,6 @@ if (localStorage.getItem("_ud") == null) {
                 location.reload();
             }, 200);
         }
-
 
     }
 }
