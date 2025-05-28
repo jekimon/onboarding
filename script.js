@@ -188,12 +188,34 @@ if (localStorage.getItem("_ud") == null) {
             return codeNme;
         }
 
+        function getPrevCurrNext(index) {
+            const stepsContainer = document.querySelector('.hl-faq');
+                if (stepsContainer) {
+                    const steps = stepsContainer.children;
+
+                    // CURRENT STEP
+                    const step = steps[index];
+                    const stepTitle = step.getElementsByTagName('h4')[0].innerHTML;
+
+                    // PREVIOUS STEP
+                    const prevStep = step.previousElementSibling;
+                    const prevStepTitle = prevStep.getElementsByTagName('h4')[0].innerHTML;
+
+                    // NEXT STEP
+                    const nextStep = step.nextElementSibling;
+                    const nextStepTitle = nextStep.getElementsByTagName('h4')[0].innerHTML;
+
+                    const prevCurrNext = { prev: prevStepTitle, curr: stepTitle, next: nextStepTitle};
+
+                    return prevCurrNext;
+                }
+        }
+
         // SIDE NAVIGATION ACCORDION OPENS AND SCROLL INTO VIEW AFTER PAGE LOAD
         const pageTitle = document.querySelector('.img-feature-container h2').innerHTML;
         if (pageTitle) {
             const stepCode = getStepCode(pageTitle);
             const stepIndex = getIndex(stepCode);
-
             const stepsContainer = document.querySelector('.hl-faq');
             if (stepsContainer) {
                 const steps = stepsContainer.children;
@@ -222,7 +244,7 @@ if (localStorage.getItem("_ud") == null) {
                 setTimeout(function () {
                     if (!stepTitle.classList.contains('completed')) {
                         stepHeading.click();
-                        faq.scrollIntoView({ behavior: "smooth", block: "center" });
+                        step.scrollIntoView({ behavior: "smooth", block: "center" });
 
                     } else {
                         const iframe = document.getElementById('vimeo-player');
@@ -365,6 +387,8 @@ if (localStorage.getItem("_ud") == null) {
                 var action = "Add";
             }
 
+            const index = getIndex(selected);
+            const step_ = getPrevCurrNext(index);
             const dataCon = document.querySelector('.contact_steps');
             const dataEl = dataCon.getElementsByTagName('p')[0];
             dataEl.innerHTML = steps;
@@ -372,18 +396,26 @@ if (localStorage.getItem("_ud") == null) {
             // GET THE HIDDEN INPUT ELEMENT
             const completedSteps = document.querySelector('#zduFaHuTGsHuJVmxlhn2');
             const selectedStep = document.querySelector('#QS91JexNdpYTzFQ74XKR');
+            const previousStep = document.querySelector('#egxVY4XxcBiyDwGlvbDd');
+            const nextStep = document.querySelector('#CKlGLeSwSP872UZjLveT');
             const lastAction = document.querySelector('#aMdFWgt2ZjAW7JRLglr0');
             // GET THE HIDDEN FORM SUBMIT BUTTON
             const completeBtn = document.querySelector('.form-builder--btn-submit button');
 
             if (completedSteps && selectedStep && lastAction) {
-                // SET THE HIDDEN FORM INPUT VALUE
+                // SET COMPLETED STEPS
                 document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].value = steps;
                 document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].dispatchEvent(new Event("input"));
-
+                // SET CURRENT STEP
                 document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].value = full;
                 document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].dispatchEvent(new Event("input"));
-
+                // SET PREVIOUS STEP
+                document.getElementsByName('egxVY4XxcBiyDwGlvbDd')[0].value = step_.prev;
+                document.getElementsByName('egxVY4XxcBiyDwGlvbDd')[0].dispatchEvent(new Event("input"));
+                // SET NEXT STEP
+                document.getElementsByName('CKlGLeSwSP872UZjLveT')[0].value = step_.next;
+                document.getElementsByName('CKlGLeSwSP872UZjLveT')[0].dispatchEvent(new Event("input"));
+                // SET LAST ACTION REQUEST
                 document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].value = action;
                 document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].dispatchEvent(new Event("input"));
 
