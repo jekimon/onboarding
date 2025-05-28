@@ -478,7 +478,7 @@ if (localStorage.getItem("_ud") == null) {
                 popupTitle.innerHTML = "Are you sure you've finished this step?";
                 popupText.innerHTML = "If you've watched the video and completed the associated tasks, please click Complete. If not, click Cancel.";
                 popupAction.innerHTML = "Complete";
-                popupPayload.innerHTML = payloadJson;
+                popupPayload.innerHTML = JSON.stringify(payloadJson);
                 setTimeout(function () {
                     popup.style.opacity = "1";
                 }, 100);
