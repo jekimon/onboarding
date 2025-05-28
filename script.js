@@ -453,24 +453,56 @@ if (localStorage.getItem("_ud") == null) {
             }, 100);
         }
 
-        function openPopup(request) {
+        function openPopup(request, title, btn, current, selected) {
             const popup = document.querySelector('.confirm-popup');
             popup.style.display = "flex";
             if (request == "reset") {
                 const popupTitle = document.getElementById('popupTitle');
                 const popupText = document.getElementById('popupText');
                 const popupAction = document.getElementById('completeButton');
+                const popupPayload = document.getElementById('payload');
+                const payloadJson = { t: title, b: btn, c: current, s: selected };
                 popupTitle.innerHTML = "Are you sure you want to uncheck this step?";
                 popupText.innerHTML = "If it was marked complete by mistake, click Reset. Otherwise, click Cancel to proceed.";
                 popupAction.innerHTML = "Reset";
+                popupPayload.innerHTML = payloadJson;
                 setTimeout(function () {
                     popup.style.opacity = "1";
                 }, 100);
             } else {
+                const popupTitle = document.getElementById('popupTitle');
+                const popupText = document.getElementById('popupText');
+                const popupAction = document.getElementById('completeButton');
+                const popupPayload = document.getElementById('payload');
+                const payloadJson = { t: title, b: btn, c: current, s: selected };
+                popupTitle.innerHTML = "Are you sure you've finished this step?";
+                popupText.innerHTML = "If you've watched the video and completed the associated tasks, please click Complete. If not, click Cancel.";
+                popupAction.innerHTML = "Complete";
+                popupPayload.innerHTML = payloadJson;
                 setTimeout(function () {
                     popup.style.opacity = "1";
                 }, 100);
             }
+        }
+
+        function processAction(t, b, c, s) {
+            const payload = document.getElementById('payload').innerHTML;
+            const json = JSON.parse(payload);
+            console.log(json);
+            // UPDATE COMPLETED STEPS
+            // setTimeout(function () {
+            //     completeStep(t, b, c, s);
+            //     setTimeout(function () {
+            //         const error = document.getElementById('error-container');
+            //         if (error) {
+            //             const formColumn = document.querySelector('.form-column');
+            //             formColumn.style.display = "flex";
+            //         } else {
+            //             console.log('Progress updated successfully')
+            //         }
+            //         closePopup();
+            //     }, 2000);
+            // }, 100);
         }
 
         function closePopup() {
@@ -497,27 +529,9 @@ if (localStorage.getItem("_ud") == null) {
                         const btnAClass = btnA.classList;
 
                         if (btnAClass.contains('completed')) {
-                              openPopup("reset");
+                              openPopup("reset", titleA, btnA, currentStep, newStep);
                         } else {
-                             openPopup("complete")
-                        }
-
-                      
-                        function processAction() {
-                            // UPDATE COMPLETED STEPS
-                            setTimeout(function () {
-                                completeStep(titleA, btnA, currentStep, newStep);
-                                setTimeout(function () {
-                                    const error = document.getElementById('error-container');
-                                    if (error) {
-                                        const formColumn = document.querySelector('.form-column');
-                                        formColumn.style.display = "flex";
-                                    } else {
-                                        console.log('Progress updated successfully')
-                                    }
-                                    closePopup();
-                                }, 2000);
-                            }, 100);
+                             openPopup("complete", titleA, btnA, currentStep, newStep);
                         }
            
                     }
