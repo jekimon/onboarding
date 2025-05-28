@@ -453,6 +453,22 @@ if (localStorage.getItem("_ud") == null) {
             }, 100);
         }
 
+        function openPopup() {
+            const popup = document.querySelector('.confirm-code');
+            popup.style.display = "flex";
+            setTimeout(function () {
+                popup.style.opacity = "1";
+            }, 100);
+        }
+
+        function closePopup() {
+            const popup = document.querySelector('.confirm-code');
+            popup.style.opacity = "0";
+            setTimeout(function () {
+                popup.style.display = "none";
+            }, 200);
+        }
+
         // STEP ITEM COMPLETE BUTTON FUNCTION
         const container = document.querySelector(".hl-faq");
         if (container) {
@@ -466,6 +482,9 @@ if (localStorage.getItem("_ud") == null) {
                         const stepTitle = titleA.innerHTML;
                         const currentStep = getCompletedSteps();
                         const newStep = getSelectedStep(stepTitle);
+
+
+
 
                         // UPDATE COMPLETED STEPS
                         setTimeout(function () {
