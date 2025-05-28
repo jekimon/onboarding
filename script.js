@@ -199,12 +199,21 @@ if (localStorage.getItem("_ud") == null) {
 
                     // PREVIOUS STEP
                     const prevStep = step.previousElementSibling;
-                    const prevStepTitle = prevStep.getElementsByTagName('h4')[0].innerHTML;
+                    if (prevStep != null) {
+                        var prevStepTitle = prevStep.getElementsByTagName('h4')[0].innerHTML;
+                    } else {
+                        var prevStepTitle = "";
+                    }
+             
 
                     // NEXT STEP
                     const nextStep = step.nextElementSibling;
-                    const nextStepTitle = nextStep.getElementsByTagName('h4')[0].innerHTML;
-
+                    if (nextStep != null) {
+                        var nextStepTitle = nextStep.getElementsByTagName('h4')[0].innerHTML; 
+                    } else {
+                        var nextStepTitle = ""; 
+                    }
+                    
                     const prevCurrNext = { prev: prevStepTitle, curr: stepTitle, next: nextStepTitle};
 
                     return prevCurrNext;
@@ -374,7 +383,7 @@ if (localStorage.getItem("_ud") == null) {
                 aBtn.classList.remove('completed');
                 aBtn.innerHTML = '⬜ Completed';
                 var steps = current.replace('/' + selected + '/', '');
-                var action = "Remove";
+                var action = "Reset";
             } else {
                 aTitle.classList.add('completed');
                 aBtn.classList.add('completed');
@@ -384,7 +393,7 @@ if (localStorage.getItem("_ud") == null) {
                 } else {
                     var steps = current + '/' + selected + '/';
                 }
-                var action = "Add";
+                var action = "Complete";
             }
 
             const index = getIndex(selected);
