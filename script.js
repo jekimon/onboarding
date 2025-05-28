@@ -237,18 +237,18 @@ if (localStorage.getItem("_ud") == null) {
                 const stepPanel = stepChild[1];
 
                 // PREVIOUS STEP
-                const prevStep = step.previousElementSibling;
-                const prevStepChild = prevStep.children;
-                const prevStepHeading = prevStepChild[0];
-                const prevStepTitle = prevStepHeading.getElementsByTagName('h4')[0];
-                const prevStepPanel = prevStepChild[1];
+                // const prevStep = step.previousElementSibling;
+                // const prevStepChild = prevStep.children;
+                // const prevStepHeading = prevStepChild[0];
+                // const prevStepTitle = prevStepHeading.getElementsByTagName('h4')[0];
+                // const prevStepPanel = prevStepChild[1];
 
                 // NEXT STEP
-                const nextStep = step.nextElementSibling;
-                const nextStepChild = nextStep.children;
-                const nextStepHeading = nextStepChild[0];
-                const nextStepTitle = nextStepHeading.getElementsByTagName('h4')[0];
-                const nextStepPanel = nextStepChild[1];
+                // const nextStep = step.nextElementSibling;
+                // const nextStepChild = nextStep.children;
+                // const nextStepHeading = nextStepChild[0];
+                // const nextStepTitle = nextStepHeading.getElementsByTagName('h4')[0];
+                // const nextStepPanel = nextStepChild[1];
 
                 setTimeout(function () {
                     if (!stepTitle.classList.contains('completed')) {
