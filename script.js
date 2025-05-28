@@ -485,7 +485,7 @@ if (localStorage.getItem("_ud") == null) {
             }
         }
 
-        function processAction(t, b, c, s) {
+        function processAction() {
             const payload = document.getElementById('payload').innerHTML;
             const json = JSON.parse(payload);
             console.log(json);
