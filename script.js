@@ -454,7 +454,7 @@ if (localStorage.getItem("_ud") == null) {
         }
 
         function openPopup(request) {
-            const popup = document.querySelector('.confirm-code');
+            const popup = document.querySelector('.confirm-popup');
             popup.style.display = "flex";
             if (request == "reset") {
                 const popupTitle = document.getElementById('popupTitle');
@@ -470,7 +470,7 @@ if (localStorage.getItem("_ud") == null) {
         }
 
         function closePopup() {
-            const popup = document.querySelector('.confirm-code');
+            const popup = document.querySelector('.confirm-popup');
             popup.style.opacity = "0";
             setTimeout(function () {
                 popup.style.display = "none";
