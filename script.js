@@ -453,12 +453,20 @@ if (localStorage.getItem("_ud") == null) {
             }, 100);
         }
 
-        function openPopup() {
+        function openPopup(request) {
             const popup = document.querySelector('.confirm-code');
             popup.style.display = "flex";
-            setTimeout(function () {
-                popup.style.opacity = "1";
-            }, 100);
+            if (request == "reset") {
+                const popupTitle = document.getElementById('popupTitle');
+                const popupText = document.getElementById('popupText');
+                const popupAction = document.getElementById('completeButton');
+                popupTitle.innerHTML = "Are you sure you want to uncheck this step?";
+                popupText.innerHTML = "If it was marked complete by mistake, click Reset. Otherwise, click Cancel to proceed.";
+                popupAction.innerHTML = "Reset";
+                setTimeout(function () {
+                    popup.style.opacity = "1";
+                }, 100);
+            }
         }
 
         function closePopup() {
@@ -482,23 +490,32 @@ if (localStorage.getItem("_ud") == null) {
                         const stepTitle = titleA.innerHTML;
                         const currentStep = getCompletedSteps();
                         const newStep = getSelectedStep(stepTitle);
+                        const btnAClass = btnA.classList;
 
+                        if (btnAClass.contains('completed')) {
+                              openPopup("reset");
+                        } else {
+                             openPopup("complete")
+                        }
 
-
-
-                        // UPDATE COMPLETED STEPS
-                        setTimeout(function () {
-                            completeStep(titleA, btnA, currentStep, newStep);
+                      
+                        function processAction() {
+                            // UPDATE COMPLETED STEPS
                             setTimeout(function () {
-                                const error = document.getElementById('error-container');
-                                if (error) {
-                                    const formColumn = document.querySelector('.form-column');
-                                    formColumn.style.display = "flex";
-                                } else {
-                                    console.log('Progress updated successfully')
-                                }
-                            }, 2000);
-                        }, 100);
+                                completeStep(titleA, btnA, currentStep, newStep);
+                                setTimeout(function () {
+                                    const error = document.getElementById('error-container');
+                                    if (error) {
+                                        const formColumn = document.querySelector('.form-column');
+                                        formColumn.style.display = "flex";
+                                    } else {
+                                        console.log('Progress updated successfully')
+                                    }
+                                    closePopup();
+                                }, 2000);
+                            }, 100);
+                        }
+           
                     }
                 }
             });
