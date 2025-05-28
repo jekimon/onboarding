@@ -543,9 +543,9 @@ if (localStorage.getItem("_ud") == null) {
                         const btnAClass = btnA.classList;
 
                         if (btnAClass.contains('completed')) {
-                              openPopup("reset", titleA, btnA, currentStep, newStep);
+                              openPopup("reset", currentStep, newStep);
                         } else {
-                             openPopup("complete", titleA, btnA, currentStep, newStep);
+                             openPopup("complete", currentStep, newStep);
                         }
            
                     }
