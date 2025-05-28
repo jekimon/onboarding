@@ -466,6 +466,10 @@ if (localStorage.getItem("_ud") == null) {
                 setTimeout(function () {
                     popup.style.opacity = "1";
                 }, 100);
+            } else {
+                setTimeout(function () {
+                    popup.style.opacity = "1";
+                }, 100);
             }
         }
 
