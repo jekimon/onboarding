@@ -23,7 +23,7 @@ if (localStorage.getItem("_ud") == null) {
 
     } else {
 
-        // SIDE NAVIGATION BAR SCROLL BEHAVIOR
+        // SET NAVIGATION BAR SCROLL POSITION ON LOAD
         window.onload = function () {
             let scrollPosition = window.scrollY;
             const sideNavBar = document.getElementById('section-_LQQKPp1HD');
@@ -34,6 +34,7 @@ if (localStorage.getItem("_ud") == null) {
             }
         };
 
+        // SET NAVIGATION BAR SCROLL POSITION ON SCROLL
         window.addEventListener('scroll', function (event) {
             const sideNavBar = document.getElementById('section-_LQQKPp1HD');
 
@@ -44,6 +45,7 @@ if (localStorage.getItem("_ud") == null) {
             }
         });
 
+        // SET USER ACCOUNT DETAILS
         const contDetails = document.querySelector('.contact_details > div');
         if (contDetails) {
             const contName = contDetails.children[0].innerHTML;
@@ -54,6 +56,7 @@ if (localStorage.getItem("_ud") == null) {
             accEmail.innerHTML = contEmail;
         }
 
+        // SIGN OUT POPUP TOGGLE
         const accBtn = document.querySelector('.sign-in-btn');
         accBtn.addEventListener("click", showHideSignout);
         function showHideSignout() {
@@ -110,73 +113,8 @@ if (localStorage.getItem("_ud") == null) {
         checkViewportWidth();
         window.addEventListener('resize', checkViewportWidth);
 
-        // SIDE NAVIGATION ACCORDION OPENS AND SCROLL INTO VIEW AFTER PAGE LOAD
-        const pageTitle = document.querySelector('.img-feature-container h2').innerHTML;
-        if (pageTitle) {
-            const title = pageTitle.toLowerCase();
-            if (title.includes('welcome')) {
-                var faqNo = 0;
-            } else if (title.includes('socials')) {
-                var faqNo = 1;
-            } else if (title.includes('step 1:')) {
-                var faqNo = 2;
-            } else if (title.includes('step 2')) {
-                var faqNo = 3;
-            } else if (title.includes('step 3')) {
-                var faqNo = 4;
-            } else if (title.includes('step 4')) {
-                var faqNo = 5;
-            } else if (title.includes('step 5')) {
-                var faqNo = 6;
-            } else if (title.includes('step 6')) {
-                var faqNo = 7;
-            } else if (title.includes('step 7')) {
-                var faqNo = 8;
-            } else if (title.includes('step 8')) {
-                var faqNo = 9;
-            } else if (title.includes('step 9')) {
-                var faqNo = 10;
-            } else if (title.includes('step 10')) {
-                var faqNo = 11;
-            } else if (title.includes('step 11')) {
-                var faqNo = 12;
-            } else if (title.includes('step 12')) {
-                var faqNo = 13;
-            } else if (title.includes('onboarding')) {
-                var faqNo = 14;
-            }
-
-            const faqCont = document.querySelector('.hl-faq');
-            if (faqCont) {
-                const faqs = faqCont.children;
-                const faq = faqs[faqNo];
-                const faqChild = faq.children
-                const faqHeading = faqChild[0];
-                const title = faqHeading.getElementsByTagName('h4')[0];
-                const faqPanel = faqChild[1];
-
-                setTimeout(function () {
-                    if (!title.classList.contains('completed')) {
-                        faqHeading.click();
-                        faq.scrollIntoView({ behavior: "smooth", block: "center" });
-
-                    } else {
-                        const iframe = document.getElementById('vimeo-player');
-                        if (iframe) {
-                            const url = new URL(iframe.src);
-                            url.searchParams.set('autoplay', '0');
-                            url.searchParams.set('muted', '0');
-                            iframe.src = url.toString();
-                        } else {
-                            console.error('iframe element with id "your-iframe-id" not found.');
-                        }
-                    }
-                }, 600);
-            }
-        }
-
         // SET STEP ITEM INDEX
-        function getNumber(txt) {
+        function getIndex(txt) {
             const step = txt;
             if (step == 'welcome') {
                 var faqNo = 0;
@@ -212,6 +150,94 @@ if (localStorage.getItem("_ud") == null) {
             return faqNo;
         }
 
+        // SET STEP CODE NAME
+        function getStepCode(text) {
+            const step = text.toLowerCase();
+            // SET STEP ITEM CODENAME
+            if (step.includes('welcome')) {
+                var codeNme = 'welcome';
+            } else if (step.includes('socials')) {
+                var codeNme = 'socials';
+            } else if (step.includes('step 1:')) {
+                var codeNme = 'step1';
+            } else if (step.includes('step 2')) {
+                var codeNme = 'step2';
+            } else if (step.includes('step 3')) {
+                var codeNme = 'step3';
+            } else if (step.includes('step 4')) {
+                var codeNme = 'step4';
+            } else if (step.includes('step 5')) {
+                var codeNme = 'step5';
+            } else if (step.includes('step 6')) {
+                var codeNme = 'step6';
+            } else if (step.includes('step 7')) {
+                var codeNme = 'step7';
+            } else if (step.includes('step 8')) {
+                var codeNme = 'step8';
+            } else if (step.includes('step 9')) {
+                var codeNme = 'step9';
+            } else if (step.includes('step 10')) {
+                var codeNme = 'step10';
+            } else if (step.includes('step 11')) {
+                var codeNme = 'step11';
+            } else if (step.includes('step 12')) {
+                var codeNme = 'step12';
+            } else if (step.includes('onboarding')) {
+                var codeNme = 'call';
+            }
+            return codeNme;
+        }
+
+        // SIDE NAVIGATION ACCORDION OPENS AND SCROLL INTO VIEW AFTER PAGE LOAD
+        const pageTitle = document.querySelector('.img-feature-container h2').innerHTML;
+        if (pageTitle) {
+            const stepCode = getStepCode(pageTitle);
+            const stepIndex = getIndex(stepCode);
+            
+            const stepsContainer = document.querySelector('.hl-faq');
+            if (stepsContainer) {
+                const steps = stepsContainer.children;
+
+                // CURRENT STEP
+                const step = steps[stepIndex];
+                const stepChild = step.children
+                const stepHeading = stepChild[0];
+                const stepTitle = stepHeading.getElementsByTagName('h4')[0];
+                const stepPanel = stepChild[1];
+
+                // PREVIOUS STEP
+                const prevStep = step.previousElementSibling;
+                const prevStepChild = prevStep.children;
+                const prevStepHeading = prevStepChild[0];
+                const prevStepTitle = prevStepHeading.getElementsByTagName('h4')[0];
+                const prevStepPanel = prevStepChild[1];
+
+                // NEXT STEP
+                const nextStep = step.nextElementSibling;
+                const nextStepChild = nextStep.children;
+                const nextStepHeading = nextStepChild[0];
+                const nextStepTitle = nextStepHeading.getElementsByTagName('h4')[0];
+                const nextStepPanel = nextStepChild[1];
+
+                setTimeout(function () {
+                    if (!stepTitle.classList.contains('completed')) {
+                        faqHeading.click();
+                        faq.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                    } else {
+                        const iframe = document.getElementById('vimeo-player');
+                        if (iframe) {
+                            const url = new URL(iframe.src);
+                            url.searchParams.set('autoplay', '0');
+                            url.searchParams.set('muted', '0');
+                            iframe.src = url.toString();
+                        } else {
+                            console.error('iframe element with id "your-iframe-id" not found.');
+                        }
+                    }
+                }, 600);
+            }
+        }
 
         // GET THE USER ONBOARDING PROGRESS THEN STYLE COMPLETED STEPS AFTER PAGE LOAD
         setTimeout(function () {
@@ -236,7 +262,7 @@ if (localStorage.getItem("_ud") == null) {
                 // UPDATE THE STEP ITEM TITLE TEXT AND COMPLETE BUTTON STYLE
                 for (let i = 0; i < dataSteps.length; i++) {
                     const step = dataSteps[i];
-                    const number = getNumber(step);
+                    const number = getIndex(step);
                     const faq = faqs[number];
                     const faqChild = faq.children
                     const faqHeading = faqChild[0];
@@ -303,87 +329,12 @@ if (localStorage.getItem("_ud") == null) {
             loader.classList.add('hidden');
         }
 
-        // SET STEP ITEM INDEX
-        function getNumber(txt) {
-            const step = txt;
-            if (step == 'welcome') {
-                var faqNo = 0;
-            } else if (step == 'socials') {
-                var faqNo = 1;
-            } else if (step == 'step1') {
-                var faqNo = 2;
-            } else if (step == 'step2') {
-                var faqNo = 3;
-            } else if (step == 'step3') {
-                var faqNo = 4;
-            } else if (step == 'step4') {
-                var faqNo = 5;
-            } else if (step == 'step5') {
-                var faqNo = 6;
-            } else if (step == 'step6') {
-                var faqNo = 7;
-            } else if (step == 'step7') {
-                var faqNo = 8;
-            } else if (step == 'step8') {
-                var faqNo = 9;
-            } else if (step == 'step9') {
-                var faqNo = 10;
-            } else if (step == 'step10') {
-                var faqNo = 11;
-            } else if (step == 'step11') {
-                var faqNo = 12;
-            } else if (step == 'step12') {
-                var faqNo = 13;
-            } else if (step == 'call') {
-                var faqNo = 14;
-            }
-            return faqNo;
-        }
-
         function updateProgress(text) {
             const dataRaw = text.replaceAll('//', ',').replaceAll('/', '');
             const dataSteps = dataRaw.split(",");
             const progCon = document.querySelector('.progress-txt');
             const progEl = progCon.getElementsByTagName('h2')[0];
             progEl.innerHTML = 'Progress: ' + dataSteps.length + ' / 15';
-        }
-
-        function getSelectedStep(text) {
-            const step = text.toLowerCase();
-
-            // SET STEP ITEM CODENAME
-            if (step.includes('welcome')) {
-                var codeNme = 'welcome';
-            } else if (step.includes('socials')) {
-                var codeNme = 'socials';
-            } else if (step.includes('step 1:')) {
-                var codeNme = 'step1';
-            } else if (step.includes('step 2')) {
-                var codeNme = 'step2';
-            } else if (step.includes('step 3')) {
-                var codeNme = 'step3';
-            } else if (step.includes('step 4')) {
-                var codeNme = 'step4';
-            } else if (step.includes('step 5')) {
-                var codeNme = 'step5';
-            } else if (step.includes('step 6')) {
-                var codeNme = 'step6';
-            } else if (step.includes('step 7')) {
-                var codeNme = 'step7';
-            } else if (step.includes('step 8')) {
-                var codeNme = 'step8';
-            } else if (step.includes('step 9')) {
-                var codeNme = 'step9';
-            } else if (step.includes('step 10')) {
-                var codeNme = 'step10';
-            } else if (step.includes('step 11')) {
-                var codeNme = 'step11';
-            } else if (step.includes('step 12')) {
-                var codeNme = 'step12';
-            } else if (step.includes('onboarding')) {
-                var codeNme = 'call';
-            }
-            return codeNme;
         }
 
         function getCompletedSteps() {
@@ -393,7 +344,7 @@ if (localStorage.getItem("_ud") == null) {
             return dataStr;
         }
 
-        function completeStep(aTitle, aBtn, current, selected) {
+        function completeStep(aTitle, aBtn, current, selected, full) {
             if (aBtn.classList.contains('completed')) {
                 aTitle.classList.remove('completed');
                 aBtn.classList.remove('completed');
@@ -428,7 +379,7 @@ if (localStorage.getItem("_ud") == null) {
                 document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].value = steps;
                 document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].dispatchEvent(new Event("input"));
 
-                document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].value = selected;
+                document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].value = full;
                 document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].dispatchEvent(new Event("input"));
 
                 document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].value = action;
@@ -469,7 +420,7 @@ if (localStorage.getItem("_ud") == null) {
             }, 100);
         }
 
-        function openPopup(request, current, selected) {
+        function openPopup(request, current, selected, fullTitle) {
             const popup = document.querySelector('.confirm-popup');
             popup.style.display = "flex";
             if (request == "reset") {
@@ -477,7 +428,7 @@ if (localStorage.getItem("_ud") == null) {
                 const popupText = document.getElementById('popupText');
                 const popupAction = document.getElementById('completeButton');
                 const popupPayload = document.getElementById('payload');
-                const payloadJson = { c: current, s: selected };
+                const payloadJson = { c: current, s: selected, f: fullTitle };
                 popupTitle.innerHTML = "Are you sure you want to uncheck this step?";
                 popupText.innerHTML = "If it was marked complete by mistake, click Reset. Otherwise, click Cancel to proceed.";
                 popupAction.innerHTML = "Reset";
@@ -490,7 +441,7 @@ if (localStorage.getItem("_ud") == null) {
                 const popupText = document.getElementById('popupText');
                 const popupAction = document.getElementById('completeButton');
                 const popupPayload = document.getElementById('payload');
-                const payloadJson = { c: current, s: selected };
+                const payloadJson = { c: current, s: selected, f: fullTitle };
                 popupTitle.innerHTML = "Are you sure you've finished this step?";
                 popupText.innerHTML = "If you've watched the video and completed the associated tasks, please click Complete. If not, click Cancel.";
                 popupAction.innerHTML = "Complete";
@@ -506,7 +457,7 @@ if (localStorage.getItem("_ud") == null) {
             const json = JSON.parse(payload);
             const faqCont = document.querySelector(".hl-faq");
             const faqs = faqCont.children;
-            const number = getNumber(json.s);
+            const number = getIndex(json.s);
             const faq = faqs[number];
             const faqChild = faq.children
             const faqHeading = faqChild[0];
@@ -515,14 +466,16 @@ if (localStorage.getItem("_ud") == null) {
             const btn = faqPanel.getElementsByTagName('u')[0];
             const completed = json.c;
             const selected = json.s;
+            const fullTitle = json.f;
 
             console.log(title);
             console.log(btn);
             console.log(completed);
             console.log(selected);
+            console.log(fullTitle);
 
             // UPDATE COMPLETED STEPS
-            completeStep(title, btn, completed, selected);
+            completeStep(title, btn, completed, selected, fullTitle);
         }
 
         function closePopup() {
@@ -545,13 +498,13 @@ if (localStorage.getItem("_ud") == null) {
                         const titleA = title.getElementsByTagName('h4')[0];
                         const stepTitle = titleA.innerHTML;
                         const currentStep = getCompletedSteps();
-                        const newStep = getSelectedStep(stepTitle);
+                        const newStep = getStepCode(stepTitle);
                         const btnAClass = btnA.classList;
 
                         if (btnAClass.contains('completed')) {
-                              openPopup("reset", currentStep, newStep);
+                              openPopup("reset", currentStep, newStep, stepTitle);
                         } else {
-                             openPopup("complete", currentStep, newStep);
+                             openPopup("complete", currentStep, newStep, stepTitle);
                         }
            
                     }
@@ -566,5 +519,7 @@ if (localStorage.getItem("_ud") == null) {
                 location.reload();
             }, 200);
         }
+
+
     }
 }
