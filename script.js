@@ -437,6 +437,10 @@ if (localStorage.getItem("_ud") == null) {
                 // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
                 setTimeout(function () {
                     completeBtn.click();
+                    const spin = document.getElementById('popup-spinner');
+                    const popContent = document.getElementById('confirmation-pop-up');
+                    spin.style.display = 'block';
+                    popContent.classList.add('loading');
                     setTimeout(function () {
                         const error = document.getElementById('error-container');
                         if (error) {
@@ -445,6 +449,8 @@ if (localStorage.getItem("_ud") == null) {
                         } else {
                             console.log('Progress updated successfully')
                         }
+                        popContent.classList.remove('loading');
+                        spin.style.display = 'none';
                         closePopup();
                     }, 2000);
                 }, 100);
