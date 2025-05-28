@@ -453,7 +453,7 @@ if (localStorage.getItem("_ud") == null) {
             }, 100);
         }
 
-        function openPopup(request, title, btn, current, selected) {
+        function openPopup(request, current, selected) {
             const popup = document.querySelector('.confirm-popup');
             popup.style.display = "flex";
             if (request == "reset") {
@@ -461,7 +461,7 @@ if (localStorage.getItem("_ud") == null) {
                 const popupText = document.getElementById('popupText');
                 const popupAction = document.getElementById('completeButton');
                 const popupPayload = document.getElementById('payload');
-                const payloadJson = { t: title, b: btn, c: current, s: selected };
+                const payloadJson = { c: current, s: selected };
                 popupTitle.innerHTML = "Are you sure you want to uncheck this step?";
                 popupText.innerHTML = "If it was marked complete by mistake, click Reset. Otherwise, click Cancel to proceed.";
                 popupAction.innerHTML = "Reset";
@@ -474,7 +474,7 @@ if (localStorage.getItem("_ud") == null) {
                 const popupText = document.getElementById('popupText');
                 const popupAction = document.getElementById('completeButton');
                 const popupPayload = document.getElementById('payload');
-                const payloadJson = { t: title, b: btn, c: current, s: selected };
+                const payloadJson = { c: current, s: selected };
                 popupTitle.innerHTML = "Are you sure you've finished this step?";
                 popupText.innerHTML = "If you've watched the video and completed the associated tasks, please click Complete. If not, click Cancel.";
                 popupAction.innerHTML = "Complete";
@@ -488,7 +488,21 @@ if (localStorage.getItem("_ud") == null) {
         function processAction() {
             const payload = document.getElementById('payload').innerHTML;
             const json = JSON.parse(payload);
-            console.log(json);
+            const faqCont = document.querySelector(".hl-faq");
+            const faqs = faqCont.children;
+            const number = getNumber(json.s);
+            const faq = faqs[number];
+            const faqChild = faq.children
+            const faqHeading = faqChild[0];
+            const faqPanel = faqChild[1];
+            const title = faqHeading.getElementsByTagName('h4')[0];
+            const btn = faqPanel.getElementsByTagName('u')[0];
+            const completed = json.c;
+            const selected = json.s;
+            console.log(title);
+            console.log(btn);
+            console.log(completed);
+            console.log(selected);
             // UPDATE COMPLETED STEPS
             // setTimeout(function () {
             //     completeStep(t, b, c, s);
