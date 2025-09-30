@@ -403,11 +403,11 @@ if (localStorage.getItem("_ud") == null) {
             dataEl.innerHTML = steps;
             updateProgress(steps);
             // GET THE HIDDEN INPUT ELEMENT
-            const completedSteps = document.querySelector('#47XCCIASHeapQTFu5oJg');
-            const selectedStep = document.querySelector('#7T5nQdOA930d3evMHix9');
-            const previousStep = document.querySelector('#sGvEVb7C7qpgJrlftNbM');
-            const nextStep = document.querySelector('#f3FXM3g8oVm8BhxX6piI');
-            const lastAction = document.querySelector('#jP0GzzahGuAf3dEM9Rzb');
+            const completedSteps = document.getElementById('47XCCIASHeapQTFu5oJg');
+            const selectedStep = document.getElementById('7T5nQdOA930d3evMHix9');
+            const previousStep = document.getElementById('sGvEVb7C7qpgJrlftNbM');
+            const nextStep = document.getElementById('f3FXM3g8oVm8BhxX6piI');
+            const lastAction = document.getElementById('jP0GzzahGuAf3dEM9Rzb');
             // GET THE HIDDEN FORM SUBMIT BUTTON
             const completeBtn = document.querySelector('.form-builder--btn-submit button');
 
@@ -559,4 +559,5 @@ if (localStorage.getItem("_ud") == null) {
 
     }
 }
+
 
