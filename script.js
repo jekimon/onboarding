@@ -403,30 +403,30 @@ if (localStorage.getItem("_ud") == null) {
             dataEl.innerHTML = steps;
             updateProgress(steps);
             // GET THE HIDDEN INPUT ELEMENT
-            const completedSteps = document.querySelector('#zduFaHuTGsHuJVmxlhn2');
-            const selectedStep = document.querySelector('#QS91JexNdpYTzFQ74XKR');
-            const previousStep = document.querySelector('#egxVY4XxcBiyDwGlvbDd');
-            const nextStep = document.querySelector('#CKlGLeSwSP872UZjLveT');
-            const lastAction = document.querySelector('#aMdFWgt2ZjAW7JRLglr0');
+            const completedSteps = document.querySelector('#47XCCIASHeapQTFu5oJg');
+            const selectedStep = document.querySelector('#7T5nQdOA930d3evMHix9');
+            const previousStep = document.querySelector('#sGvEVb7C7qpgJrlftNbM');
+            const nextStep = document.querySelector('#f3FXM3g8oVm8BhxX6piI');
+            const lastAction = document.querySelector('#jP0GzzahGuAf3dEM9Rzb');
             // GET THE HIDDEN FORM SUBMIT BUTTON
             const completeBtn = document.querySelector('.form-builder--btn-submit button');
 
             if (completedSteps && selectedStep && lastAction) {
                 // SET COMPLETED STEPS
-                document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].value = steps;
-                document.getElementsByName('zduFaHuTGsHuJVmxlhn2')[0].dispatchEvent(new Event("input"));
+                document.getElementsByName('47XCCIASHeapQTFu5oJg')[0].value = steps;
+                document.getElementsByName('47XCCIASHeapQTFu5oJg')[0].dispatchEvent(new Event("input"));
                 // SET CURRENT STEP
-                document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].value = full;
-                document.getElementsByName('QS91JexNdpYTzFQ74XKR')[0].dispatchEvent(new Event("input"));
+                document.getElementsByName('7T5nQdOA930d3evMHix9')[0].value = full;
+                document.getElementsByName('7T5nQdOA930d3evMHix9')[0].dispatchEvent(new Event("input"));
                 // SET PREVIOUS STEP
-                document.getElementsByName('egxVY4XxcBiyDwGlvbDd')[0].value = step_.prev;
-                document.getElementsByName('egxVY4XxcBiyDwGlvbDd')[0].dispatchEvent(new Event("input"));
+                document.getElementsByName('sGvEVb7C7qpgJrlftNbM')[0].value = step_.prev;
+                document.getElementsByName('sGvEVb7C7qpgJrlftNbM')[0].dispatchEvent(new Event("input"));
                 // SET NEXT STEP
-                document.getElementsByName('CKlGLeSwSP872UZjLveT')[0].value = step_.next;
-                document.getElementsByName('CKlGLeSwSP872UZjLveT')[0].dispatchEvent(new Event("input"));
+                document.getElementsByName('f3FXM3g8oVm8BhxX6piI')[0].value = step_.next;
+                document.getElementsByName('f3FXM3g8oVm8BhxX6piI')[0].dispatchEvent(new Event("input"));
                 // SET LAST ACTION REQUEST
-                document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].value = action;
-                document.getElementsByName('aMdFWgt2ZjAW7JRLglr0')[0].dispatchEvent(new Event("input"));
+                document.getElementsByName('jP0GzzahGuAf3dEM9Rzb')[0].value = action;
+                document.getElementsByName('jP0GzzahGuAf3dEM9Rzb')[0].dispatchEvent(new Event("input"));
 
                 // CLICK THE SUBMIT BUTTON OF THE HIDDEN FORM TO UPDATE ONBOARDING PROGRESS
                 setTimeout(function () {
@@ -559,3 +559,4 @@ if (localStorage.getItem("_ud") == null) {
 
     }
 }
+
